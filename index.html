@@ -1,0 +1,2421 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Unión Musical Roquetas de Mar: banda de música, academia y próximas actuaciones en Roquetas de Mar, Almería."
+    />
+    <meta name="theme-color" content="#071a2b" />
+    <title>Unión Musical Roquetas de Mar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Jost:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap");
+
+      :root {
+        --navy: #071a2b;
+        --navy2: #020b13;
+        --navy-deep: #04101c;
+        --gold: #c99a2e;
+        --gold-dark: #9b7018;
+        --gold-light: #e3bb63;
+        --cream: #ffffff;
+        --white: #fff;
+        --muted: #b8bec5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--navy2);
+        color: var(--white);
+        font-family: Montserrat, Arial, sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+      }
+
+      section[id],
+      header[id] {
+        scroll-margin-top: 88px;
+      }
+
+      .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        z-index: 100;
+        background: var(--gold);
+        color: #111;
+        padding: 10px 16px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 0 0 6px 0;
+      }
+
+      .skip-link:focus {
+        left: 0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 5vw;
+        transition: 0.35s;
+      }
+
+      .nav.scrolled {
+        background: rgba(2, 11, 19, 0.94);
+        backdrop-filter: blur(12px);
+        padding-block: 12px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand img {
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+      }
+
+      .brand strong {
+        font-size: 15px;
+        letter-spacing: 1.5px;
+      }
+
+      .brand span {
+        display: block;
+        color: var(--gold);
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-top: 3px;
+      }
+
+      .menu {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .menu a {
+        opacity: 0.9;
+      }
+
+      .menu a:hover {
+        color: var(--gold);
+      }
+
+      .listen {
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 10px 15px;
+        border-radius: 30px;
+      }
+
+      .listen:before {
+        content: "▶";
+        margin-right: 7px;
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 34px;
+        height: 30px;
+        background: none;
+        border: 0;
+        padding: 0;
+        z-index: 30;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+
+      .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(2, 8, 13, 0.9) 0%,
+            rgba(2, 8, 13, 0.58) 45%,
+            rgba(2, 8, 13, 0.15) 100%
+          ),
+          linear-gradient(0deg, rgba(2, 8, 13, 0.72), transparent 35%),
+          url("images/hero.jpg") center/cover no-repeat;
+      }
+
+      .hero-content {
+        width: min(1150px, 90%);
+        margin: auto;
+        padding-top: 70px;
+        animation: heroIn 0.9s ease both;
+      }
+
+      @keyframes heroIn {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .eyebrow {
+        font-family: "Cormorant Garamond", serif;
+        color: var(--gold);
+        font-size: clamp(28px, 6vw, 75px);
+        letter-spacing: 4px;
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-size: clamp(38px, 11vw, 120px);
+        line-height: 0.9;
+        margin: 0;
+        max-width: 100%;
+        letter-spacing: -2px;
+        white-space: normal;
+      }
+
+      .hero h1 span {
+        color: var(--gold);
+      }
+
+      .hero p {
+        font-size: 17px;
+        margin: 30px 0;
+      }
+
+      .btns {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 14px 22px;
+        border: 1px solid var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+      }
+
+      .btn.primary {
+        background: var(--gold);
+        color: #111;
+      }
+
+      .btn.secondary {
+        background: transparent;
+        color: #fff;
+        border-color: #fff;
+      }
+
+      .wave {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 85px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .wave svg {
+        width: 110%;
+        height: 100%;
+        display: block;
+      }
+
+      .wave path {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 2;
+      }
+
+      /* --- SECCIÓN SPLIT (EVENTO CON IMAGEN Y ETIQUETA) --- */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .event {
+        /* Velo sutil solo para unificar tono, no para tapar la foto:
+           el contraste del texto ahora lo da la tarjeta de cristal
+           de .date-tag-card y .event-text, no este overlay */
+        background-image:
+          linear-gradient(
+            100deg,
+            rgba(7, 26, 43, 0.25) 0%,
+            rgba(7, 26, 43, 0.08) 45%,
+            rgba(7, 26, 43, 0) 75%
+          ),
+          url("images/mar.jpg");
+
+        /* Ajuste y posicionamiento: mostramos la imagen a ancho completo
+           para que se vean tanto la ola rota de la izquierda como el
+           borde ondulado de la derecha (pensado para fundirse con el
+           panel oscuro de audio). Solo recortamos verticalmente si
+           hiciera falta, nunca a los lados. */
+        background-size: 100% auto;
+        background-position: center center;
+        background-color: var(--navy2); /* tono del cielo/mar por si queda algún hueco vertical */
+        background-repeat: no-repeat;
+
+        color: var(--navy2);
+        padding: 80px 6vw;
+        display: flex;
+        align-items: center;
+   
+      }
+      .event-inner {
+        width: 100%;
+        max-width: 580px;
+        margin: auto;
+      }
+
+      /* Encabezado con línea dorada */
+      .label-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 35px;
+      }
+
+      .section-label {
+        color: var(--gold-dark);
+        letter-spacing: 3px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .gold-line {
+        flex-grow: 1;
+        border: 0;
+        border-top: 1px solid var(--gold-dark);
+        margin: 0;
+        opacity: 0.6;
+      }
+
+      /* Disposición de tarjeta y texto */
+      .event-details-layout {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      /* Tarjeta traslúcida para el día */
+      .date-tag-card {
+        position: relative;
+        min-width: 170px;
+        padding: 30px 20px;
+        border-radius: 18px;
+        text-align: center;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 15px 35px rgba(7, 26, 43, 0.08);
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .date-tag-card .day {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 100px;
+        line-height: 0.8;
+        color: var(--navy);
+        font-weight: 700;
+      }
+
+      .date-tag-card .month {
+        color: var(--gold-dark);
+        font-size: 14px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        margin-top: 12px;
+        margin-bottom: 15px;
+      }
+
+      .tag-divider {
+        border: 0;
+        border-top: 1px solid var(--gold-dark);
+        width: 45%;
+        margin: 0 auto 15px;
+        opacity: 0.5;
+      }
+
+      .date-tag-card .year {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        color: var(--gold-dark);
+        letter-spacing: 2px;
+      }
+
+      /* Detalles del concierto */
+      .event-text {
+        flex: 1;
+        padding: 28px 32px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 15px 35px rgba(7, 26, 43, 0.08);
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .event-text h2 {
+        font-size: 46px;
+        line-height: 0.95;
+        margin: 0 0 24px;
+        color: var(--navy2);
+        letter-spacing: -1px;
+      }
+
+      .location-time p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        color: var(--navy);
+        margin: 8px 0;
+        font-weight: 600;
+      }
+
+      .location-time .icon {
+        color: var(--gold-dark);
+        font-size: 16px;
+      }
+
+      /* Botón VER DETALLES */
+      .btn-details {
+        display: inline-block;
+        background: var(--navy);
+        color: var(--white);
+        padding: 14px 28px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        margin-top: 25px;
+        transition: 0.3s;
+      }
+
+      .btn-details:hover {
+        background: var(--gold);
+        color: var(--navy);
+      }
+
+      /* Columna de Audio */
+      .audio {
+        background: var(--navy2);
+        padding: 75px 8vw;
+        display: flex;
+        align-items: center;
+      }
+
+      .audio-inner {
+        width: 100%;
+        max-width: 560px;
+        margin: auto;
+      }
+
+      .audio-card {
+        background: rgba(255, 255, 255, 0.055);
+        padding: 24px;
+        border-radius: 12px;
+      }
+
+      .track {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .track-cover {
+        width: 85px;
+        height: 85px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #111, #8c6b2a);
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+      }
+
+      .track-meta {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .track-meta h3 {
+        margin: 0 0 5px;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .track-meta small {
+        color: var(--muted);
+      }
+
+      .play {
+        margin-left: auto;
+        border: 0;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        background: var(--gold);
+        cursor: pointer;
+        font-size: 15px;
+        transition: transform 0.2s;
+      }
+
+      .play:hover {
+        transform: scale(1.07);
+      }
+
+      .play:active {
+        transform: scale(0.95);
+      }
+
+      .progress-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .time {
+        font-size: 11px;
+        color: var(--muted);
+        min-width: 32px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .progress {
+        flex: 1;
+        height: 4px;
+        background: #39424b;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .progress:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 4px;
+      }
+
+      .progress i {
+        display: block;
+        width: 0%;
+        height: 100%;
+        background: var(--gold);
+        transition: width 0.1s linear;
+      }
+
+      .waveform {
+        color: var(--gold);
+        letter-spacing: 2px;
+        font-size: 13px;
+        margin-top: 12px;
+        text-align: center;
+        opacity: 0.8;
+      }
+
+      .audio-note {
+        font-size: 11px;
+        color: #8a95a1;
+        margin-top: 12px;
+        text-align: center;
+      }
+
+      /* ===== SECCIÓN ONDA Y ACTIVIDADES ===== */
+      .activities-wave-section {
+        position: relative;
+        background: var(--navy2);
+        padding: 40px 0 60px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .activities-wave-section .wave-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .activities-wave-section .wave-top svg {
+        width: 110%;
+        height: 100%;
+        display: block;
+      }
+
+      .activities-wave-section .wave-top path {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 2;
+      }
+
+      .activities-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .activity-item {
+        color: var(--gold);
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .activities-list .dot {
+        color: var(--gold-dark);
+        font-size: 18px;
+        opacity: 0.7;
+      }
+
+      @media (max-width: 560px) {
+        .activities-list {
+          gap: 12px;
+          flex-direction: column;
+        }
+        .activities-list .dot {
+          display: none;
+        }
+      }
+
+      /* Academia */
+      .academy {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--cream);
+        color: var(--navy);
+      }
+
+      .academy-photo {
+        min-height: 430px;
+        background:
+          linear-gradient(90deg, rgba(2, 8, 13, 0.05), rgba(2, 8, 13, 0.2)),
+          url("images/academia.jpg") center/cover no-repeat;
+      }
+
+      .academy-text {
+        padding: 80px 9vw;
+        display: flex;
+        align-items: center;
+      }
+
+      .academy-text h2 {
+        font-size: 65px;
+        line-height: 0.88;
+        margin: 10px 0 20px;
+      }
+
+      .academy-text p {
+        line-height: 1.8;
+        max-width: 470px;
+        font-size: 14px;
+      }
+
+      /* ===== LA BANDA / HISTORIA ===== */
+      .historia {
+        background: var(--navy-deep);
+        padding: 90px 0;
+        color: #fff;
+      }
+
+      .historia h2.serif {
+        color: #fff;
+      }
+
+      .eyebrow.center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .timeline-wrap {
+        margin-top: 60px;
+        position: relative;
+        overflow-x: auto;
+        padding-bottom: 16px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) transparent;
+      }
+
+      .timeline-wrap::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .timeline-wrap::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 3px;
+      }
+
+      .timeline {
+        display: flex;
+        gap: 0;
+        position: relative;
+        min-width: 900px;
+        padding: 0 10px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 82px;
+        left: 5%;
+        right: 5%;
+        height: 1px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--gold) 0 8px,
+          transparent 8px 16px
+        );
+        opacity: 0.6;
+        z-index: 1; /* Se asegura de quedar por detrás de las imágenes */
+      }
+
+      .t-item {
+        flex: 1;
+        text-align: center;
+        padding: 0 14px;
+        position: relative;
+      }
+
+      .t-item .yr {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        color: var(--gold-light);
+        margin-bottom: 14px;
+      }
+
+      .t-item .thumb {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 16px;
+        border: 2px solid var(--gold);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        position: relative;
+        z-index: 2;
+        background: var(--navy-deep);
+      }
+
+      .t-item p {
+        font-size: 13px;
+        color: #c3cad4;
+        line-height: 1.5;
+        max-width: 170px;
+        margin: 0 auto;
+      }
+
+      .mission-row {
+        margin: 70px 0 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .mission-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 32px 26px;
+        border-radius: 8px;
+      }
+
+      .mission-card .num {
+        color: var(--gold);
+        font-family: "Playfair Display", serif;
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+
+      .mission-card h4 {
+        color: #fff;
+        font-size: 17px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .mission-card p {
+        color: var(--muted);
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+
+      /* Animaciones al hacer scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.in-view {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Galería */
+      .gallery {
+        background: var(--cream);
+        color: var(--navy);
+        padding: 80px 6vw;
+      }
+
+      .gallery-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 30px;
+      }
+
+      .gallery h2 {
+        font-size: 60px;
+        margin: 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 220px 220px;
+        gap: 12px;
+      }
+
+      .g {
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        min-height: 150px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .g:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent 45%, rgba(0, 0, 0, 0.5));
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .g:hover:after {
+        opacity: 1;
+      }
+
+      .g1 {
+        grid-row: span 2;
+        background-image: url("images/concierto.jpg");
+      }
+
+      .g2 {
+        background-image: url("images/galeria2.jpg");
+      }
+
+      .g3 {
+        background-image: url("images/galeria3.jpeg");
+      }
+
+      .g4 {
+        background-image: url("images/galeria4.jpg");
+      }
+
+      .g5 {
+        background-image: url("images/galeria5.jpg");
+      }
+
+      /* CTA */
+      .cta {
+        padding: 100px 6vw;
+        text-align: center;
+        background:
+          linear-gradient(rgba(3, 13, 21, 0.65), rgba(3, 13, 21, 0.9)),
+          url("images/concierto.jpg") center/cover fixed;
+      }
+
+      .cta h2 {
+        font-size: 72px;
+        margin: 0 0 10px;
+      }
+
+      .cta p {
+        color: #ddd;
+      }
+
+      .btn.dark {
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+
+      /* ===== CONTACTO ===== */
+
+      /* ===== CONTACTO (CORREGIDO) ===== */
+      .section-contact {
+        background: var(--cream);
+        padding: 90px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 30px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--navy-deep);
+        font-size: 14.5px;
+      }
+
+      .contact-list svg {
+        color: var(--gold);
+        flex-shrink: 0;
+      }
+
+      .social-row {
+        display: flex;
+        gap: 12px;
+      }
+
+      .social-row a {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 50%;
+        color: var(--navy2);
+        transition: 0.2s ease;
+      }
+
+      .social-row a:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+        background: rgba(201, 154, 46, 0.1);
+      }
+
+      .contact-form {
+        background-color: #020b13;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.82rem;
+        color: var(--gold-light);
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: var(--white);
+        background: rgba(2, 11, 19, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        padding: 12px 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .field select option {
+        background: var(--navy2);
+        color: var(--white);
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--gold);
+      }
+
+      .form-note {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      @media (min-width: 900px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+        }
+      }
+
+      /* ===== COLABORADORES ===== */
+      /* Sección puente entre el contacto (claro) y el footer (oscuro):
+         usa el mismo tono que el footer para que la transición sea
+         continua, y la misma onda dorada que ya se usa tras la galería. */
+
+      .collaborators {
+        position: relative;
+        background: var(--navy-deep);
+        padding: 30px 0 90px;
+        overflow: hidden;
+      }
+
+      .collaborators .wave-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .collaborators .wave-top svg {
+        width: 110%;
+        height: 100%;
+        display: block;
+      }
+
+      .collaborators .wave-top path {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 2;
+      }
+
+      .collab-head {
+        text-align: center;
+        max-width: 560px;
+        margin: 60px auto 50px;
+      }
+
+      .collab-head .section-label {
+        justify-content: center;
+        display: flex;
+      }
+
+      .collab-head h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 40px;
+        line-height: 1.05;
+        color: var(--cream);
+        margin: 14px 0 12px;
+      }
+
+      .collab-head p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .collab-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .collab-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+        padding: 40px 28px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          background 0.25s ease;
+      }
+
+      .collab-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(201, 154, 46, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .collab-logo {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--cream);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        flex-shrink: 0;
+        overflow: hidden;
+        padding: 10px;
+      }
+
+      .collab-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .collab-card h3 {
+        font-size: 17px;
+        color: var(--cream);
+        letter-spacing: 0.3px;
+      }
+
+      .collab-card p {
+        font-size: 13.5px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .collab-card a.collab-link {
+        margin-top: 4px;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--gold-light);
+        border-bottom: 1px solid rgba(227, 187, 99, 0.4);
+        padding-bottom: 2px;
+        transition: border-color 0.2s ease;
+      }
+
+      .collab-card a.collab-link:hover {
+        border-color: var(--gold-light);
+      }
+
+      /* ===== FOOTER ===== */
+
+      footer {
+        background: var(--navy-deep);
+        color: #c3cad4;
+        padding: 70px 0 26px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 44px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .brand-badge {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        color: #111;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .footer-brand .brand-text .l1 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .footer-brand .brand-text .l2 {
+        color: var(--gold-light);
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-top: 2px;
+      }
+
+      footer p.tagline {
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 1px;
+      }
+
+      footer h5 {
+        color: #fff;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 0; /* Elimina desfases de margen superior */
+        margin-bottom: 18px;
+        font-weight: 600;
+        line-height: 1; /* Normaliza la altura de línea */
+      }
+
+      footer .flinks {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+
+      footer .flinks a {
+        font-size: 13.5px;
+        color: #b6bdc8;
+      }
+
+      footer .flinks a:hover {
+        color: var(--gold-light);
+      }
+
+      .socials {
+        display: flex;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .socials a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #fff;
+        transition: 0.2s;
+      }
+
+      .socials a:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+      }
+
+      .contact-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 13.5px;
+        margin-bottom: 12px;
+        color: #b6bdc8;
+      }
+
+      .contact-item .ic {
+        color: var(--gold);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        font-size: 12px;
+        color: var(--muted);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media (max-width: 850px) {
+        .collab-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .collab-grid .collab-card:last-child {
+          grid-column: span 2;
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        .nav-toggle {
+          display: flex;
+        }
+
+        .menu {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: min(78vw, 320px);
+          gap: 26px;
+          padding: 100px 34px 40px;
+          background: rgba(2, 11, 19, 0.98);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          transform: translateX(100%);
+          transition: transform 0.4s ease;
+          box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu.open {
+          transform: translateX(0);
+        }
+
+        .menu a {
+          font-size: 15px;
+        }
+
+        .listen {
+          order: 99;
+        }
+
+        .brand strong {
+          font-size: 12px;
+        }
+
+        .hero-content {
+          padding-top: 100px;
+        }
+
+        .hero {
+          background-position: 58% center;
+        }
+
+        .split,
+        .academy {
+          grid-template-columns: 1fr;
+        }
+
+        .event-details-layout {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .location-time p {
+          justify-content: center;
+        }
+
+        .audio {
+          padding: 60px 6vw;
+        }
+
+        .academy-photo {
+          min-height: 300px;
+        }
+
+        .timeline {
+          overflow: auto;
+          padding-bottom: 15px;
+        }
+
+        .t-item {
+          min-width: 170px;
+        }
+
+        .timeline::before {
+          left: 80px;
+          width: calc(100% - 160px);
+        }
+
+        .gallery-head {
+          display: block;
+        }
+
+        .gallery h2 {
+          font-size: 44px;
+          margin-bottom: 20px;
+        }
+
+        .academy-text h2 {
+          font-size: 48px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 180px 180px 180px;
+        }
+
+        .g1 {
+          grid-row: span 2;
+        }
+
+        .cta h2 {
+          font-size: 52px;
+        }
+
+        .cta {
+          background-attachment: scroll;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 38px 24px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .mission-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-brand {
+          justify-content: center;
+        }
+
+        .socials {
+          justify-content: center;
+        }
+
+        .contact-item {
+          justify-content: center;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .collab-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .collab-grid .collab-card:last-child {
+          grid-column: auto;
+          max-width: none;
+        }
+
+        .collab-head h2 {
+          font-size: 32px;
+        }
+
+        h1 {
+          letter-spacing: -1px;
+        }
+
+        .hero p {
+          font-size: 15px;
+        }
+
+        .btn {
+          padding: 12px 18px;
+          font-size: 10px;
+        }
+
+        .track {
+          flex-wrap: wrap;
+        }
+
+        .track-cover {
+          width: 64px;
+          height: 64px;
+          font-size: 24px;
+        }
+
+        .play {
+          margin-left: 0;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(5, 170px);
+        }
+
+        .g1,
+        .g5 {
+          grid-column: auto;
+          grid-row: auto;
+        }
+
+        .gallery h2 {
+          font-size: 36px;
+        }
+
+        .academy-text h2 {
+          font-size: 44px;
+        }
+
+        .event {
+          padding: 40px 16px;
+        }
+
+        .date-tag-card .day {
+          font-size: 60px;
+        }
+
+        .event-text h2 {
+          font-size: 30px;
+        }
+      }
+
+      /* =========================================================
+   MEDIA QUERIES - SECCIÓN EVENTOS (FECHA Y DETALLES) 850px
+   ========================================================= */
+
+@media (max-width: 850px) {
+  /* 1. Reajuste del contenedor de la imagen y fondo */
+  .event {
+    padding: 50px 24px;
+    /* El contraste del texto ya no depende de tapar la foto con blanco:
+       tanto .date-tag-card como .event-text son tarjetas de cristal
+       con su propio fondo translúcido, así que aquí solo nos aseguramos
+       de que la imagen cubra toda la sección. */
+    background-size: 100% auto;
+    background-position: center center;
+    background-color: #b9cfdb;
+  }
+
+  .event-text {
+    padding: 22px 24px;
+  }
+
+  /* 2. Alineación vertical del layout interno */
+  .event-details-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+    width: 100%;
+  }
+
+  /* 3. Adaptación de la tarjeta traslúcida de la fecha */
+  .date-tag-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 240px; /* Evita que ocupe todo el ancho en tablets/móviles grandes */
+    margin: 0 auto;
+    padding: 20px 15px;
+  }
+
+  .date-tag-card .day {
+    font-size: 72px; /* Reduce el tamaño del número en móviles */
+    line-height: 0.85;
+  }
+
+  .date-tag-card .month {
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+
+  .date-tag-card .year {
+    font-size: 22px;
+  }
+
+  /* 4. Adaptación de los textos del evento */
+  .event-text h2 {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .location-time p {
+    justify-content: center; /* Centra los iconos y texto de ubicación/hora */
+    font-size: 14px;
+  }
+
+  .btn-details {
+    width: 100%; /* El botón ocupa todo el ancho en móvil para mejor usabilidad */
+    max-width: 240px;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+    </style>
+  </head>
+
+  <body>
+    <a href="#banda" class="skip-link">Saltar al contenido</a>
+
+    <nav class="nav" id="nav">
+      <a class="brand" href="#">
+        <img src="images/logo.png" alt="Unión Musical Roquetas de Mar" />
+        <div><strong>UNIÓN MUSICAL</strong><span>ROQUETAS DE MAR</span></div>
+      </a>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu" id="menu">
+        <a href="#banda">LA BANDA</a>
+        <a href="#musica">MÚSICA</a>
+        <a href="#actuaciones">ACTUACIONES</a>
+        <a href="#academia">ACADEMIA</a>
+        <a href="#galeria">GALERÍA</a>
+        <a href="#contacto">CONTACTO</a>
+   <!--      <a class="listen" href="#musica">ESCUCHAR</a> -->
+      </div>
+    </nav>
+
+    <header class="hero" id="banda">
+      <div class="hero-content">
+        <div class="eyebrow">UNIÓN MUSICAL</div>
+        <!-- <h1>UNIÓN<br><span>MUSICAL</span></h1> -->
+        <h1>ROQUETAS<span> DE MAR</span></h1>
+        <p>Más de 30 años haciendo música.</p>
+        <div class="btns">
+          <a class="btn primary" href="#actuaciones">PRÓXIMA ACTUACIÓN</a>
+          <a class="btn secondary" href="#labanda">CONÓCENOS</a>
+        </div>
+      </div>
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path
+            d="M0,55 C150,10 250,100 390,55 S650,15 800,60 S1030,105 1200,40"
+          />
+        </svg>
+      </div>
+    </header>
+
+    <section class="split" id="actuaciones">
+      <div class="event">
+        <div class="event-inner">
+          <div class="label-header">
+            <span class="section-label">PRÓXIMA ACTUACIÓN</span>
+            <hr class="gold-line" />
+          </div>
+
+          <div class="event-details-layout">
+            <!-- Tarjeta traslúcida para el día -->
+            <div class="date-tag-card">
+              <div class="day">15</div>
+              <div class="month">AGOSTO</div>
+              <hr class="tag-divider" />
+              <div class="year">2026</div>
+            </div>
+
+            <!-- Información del Concierto -->
+            <div class="event-text">
+              <h2>CONCIERTO<br />DE VERANO</h2>
+              <div class="location-time">
+                <p><span class="icon">📍</span> Roquetas de Mar</p>
+                <p><span class="icon">🕒</span> 21:30 h</p>
+              </div>
+              <a class="btn-details" href="#">VER DETALLES</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio" id="musica">
+        <div class="audio-inner">
+          <div class="section-label" style="color: var(--gold)">
+            ESCUCHA NUESTRA MÚSICA
+          </div>
+          <div class="audio-card" style="margin-top: 20px">
+            <div class="track">
+              <div class="track-cover">
+                <img
+                  src="images/trombon.jpg"
+                  alt="Portada de Pasodoble a Roquetas"
+                  loading="lazy"
+                />
+              </div>
+              <div class="track-meta">
+                <h3>Pasodoble a Roquetas</h3>
+                <small>Unión Musical Roquetas de Mar</small>
+              </div>
+              <button class="play" id="play" aria-label="Reproducir">▶</button>
+            </div>
+            <div class="progress-row">
+              <span class="time" id="timeCurrent">0:00</span>
+              <div
+                class="progress"
+                id="progressBar"
+                role="slider"
+                tabindex="0"
+                aria-label="Progreso de la pista"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <i id="progress"></i>
+              </div>
+              <span class="time" id="timeDuration">0:00</span>
+            </div>
+            <div class="waveform" aria-hidden="true">
+              ▁▃▅▂▆▇▃▅▇▆▃▅▇▂▆▅▃▇▅▂▆▇▃▅▆
+            </div>
+            <p class="audio-note" id="audioNote">
+              Formato MP3 · coloca tu archivo en
+              <code>audio/pasodoble-a-roquetas.mp3</code>
+            </p>
+            <audio id="audio" preload="metadata">
+              <source src="audio/cancion_1.mp3" type="audio/mpeg" />
+            </audio>
+          </div>
+          <p
+            style="
+              color: #aeb8c0;
+              font-size: 11px;
+              text-align: center;
+              margin-top: 18px;
+            "
+          >
+            También en &nbsp; YouTube · Spotify · Facebook
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ONDA Y ACTIVIDADES ===================== -->
+    <section class="activities-wave-section">
+      <!-- Onda superior que encaja con el fondo del reproductor de audio -->
+      <div class="wave-top" aria-hidden="true">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path
+            d="M0,55 C150,10 250,100 390,55 S650,15 800,60 S1030,105 1200,40"
+          />
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="activities-list">
+          <span class="activity-item">CONCIERTOS</span>
+          <span class="dot">•</span>
+          <span class="activity-item">PROCESIONES</span>
+          <span class="dot">•</span>
+          <span class="activity-item">FIESTAS PATRONALES</span>
+          <span class="dot">•</span>
+          <span class="activity-item">CABALGATAS</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="academy" id="academia">
+      <div class="academy-photo"></div>
+      <div class="academy-text">
+        <div>
+          <div class="section-label">ACADEMIA DE MÚSICA</div>
+          <h2>La música <br />empieza aquí</h2>
+          <p>
+            Formamos a los músicos del futuro con pasión, esfuerzo y dedicación.
+            Desde la iniciación musical hasta formar parte de nuestra
+            agrupación.
+          </p>
+          <a class="btn dark" href="#">CONOCE LA ACADEMIA →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LA BANDA / HISTORIA ===================== -->
+    <section class="historia" id="labanda">
+      <div class="container">
+        <div class="eyebrow center">Nuestra historia</div>
+        <h2 class="serif" style="text-align: center; font-size: 36px">
+          Tres décadas de música junto a Roquetas
+        </h2>
+
+        <div class="timeline-wrap">
+          <div class="timeline">
+            <div class="t-item reveal">
+              <div class="yr">1993</div>
+              <img
+                class="thumb"
+                src="images/h1.jpg"
+                alt="Fundación de la Asociación Sol y Mar"
+                loading="lazy"
+              />
+              <p>Nace la Asociación Músico-Cultural Sol y Mar.</p>
+            </div>
+            <div class="t-item reveal">
+              <div class="yr">1995</div>
+              <img
+                class="thumb"
+                src="images/h2.jpg"
+                alt="Primer concierto de la banda"
+                loading="lazy"
+              />
+              <p>Primer concierto oficial de la Banda de Música, en Navidad.</p>
+            </div>
+            <div class="t-item reveal">
+              <div class="yr">2002</div>
+              <img
+                class="thumb"
+                src="images/h3.jpg"
+                alt="Refundación como Unión Musical"
+                loading="lazy"
+              />
+              <p>
+                La asociación se refunda como Unión Musical Roquetas de Mar.
+              </p>
+            </div>
+
+            <div class="t-item reveal">
+              <div class="yr">2026</div>
+              <img
+                class="thumb"
+                src="images/h5.png"
+                alt="Actualidad de la banda"
+                loading="lazy"
+              />
+              <p>Seguimos creciendo junto a Roquetas y su gente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-row">
+          <div class="mission-card reveal">
+            <div class="num">♪</div>
+            <h4>Nuestra misión</h4>
+            <p>
+              Difundir la música en Roquetas de Mar y acompañar cada fiesta,
+              procesión y celebración del municipio.
+            </p>
+          </div>
+          <div class="mission-card reveal">
+            <div class="num">♫</div>
+            <h4>Nuestros valores</h4>
+            <p>
+              Esfuerzo, compañerismo y pasión por la música, transmitidos de
+              generación en generación.
+            </p>
+          </div>
+          <div class="mission-card reveal">
+            <div class="num">♩</div>
+            <h4>Colaboración municipal</h4>
+            <p>
+              Trabajamos junto al Ayuntamiento y ensayamos en la Escuela
+              Municipal de Música, Danza y Teatro.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+      <div class="gallery-head">
+        <div>
+          <div class="section-label">GALERÍA</div>
+          <h2>Momentos que suenan</h2>
+        </div>
+        <!-- <a class="btn dark" href="#">VER TODA LA GALERÍA</a> -->
+      </div>
+      <div class="grid">
+        <div class="g g1"></div>
+        <div class="g g2"></div>
+        <div class="g g3"></div>
+        <div class="g g4"></div>
+        <div class="g g5"></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>VEN A ESCUCHARNOS</h2>
+      <p>La música se vive en directo.</p>
+      <div class="btns" style="justify-content: center; margin-top: 28px">
+        <a class="btn primary" href="#actuaciones">PRÓXIMAS ACTUACIONES</a>
+        <!-- <a class="btn secondary" href="mailto:info@umroquetas.es">CONTACTAR</a> -->
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+
+    <section class="section-contact" id="contacto">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-intro">
+            <div class="section-label">CONTRATACIÓN</div>
+            <h2
+              style="
+                font-size: 52px;
+                margin: 12px 0 20px;
+                line-height: 0.95;
+                color: var(--navy2);
+              "
+            >
+              Llevemos la música<br />a tu evento
+            </h2>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 15px;
+                line-height: 1.6;
+                max-width: 460px;
+              "
+            >
+              Conciertos, audiciones, fiestas patronales, procesiones, cabalgatas, pasacalles.. Cuéntanos qué estás organizando y te respondemos con disponibilidad y repertorio.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Roquetas de Mar, Almería (España)
+              </li>
+              <li>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                info@umroquetas.es
+              </li>
+            </ul>
+
+            <div class="social-row">
+              <a
+                href="https://www.instagram.com/banda_roquetas"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle
+                    cx="17.3"
+                    cy="6.7"
+                    r="1.1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/BandaRoquetas"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5" />
+                  <path
+                    d="M15 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCZh4WNRrbnVeWUR0BMr2q4Q"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+                  <path
+                    d="M10.5 9.5 15 12l-4.5 2.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            id="contacto-form"
+            action="https://formspree.io/f/FORMSPREE_ENDPOINT_AQUI"
+            method="POST"
+          >
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                autocomplete="name"
+                placeholder="Tu nombre completo"
+              />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="tuemail@ejemplo.com"
+              />
+            </div>
+            <div class="field">
+              <label for="tipo">Tipo de evento</label>
+              <select id="tipo" name="tipo">
+                <option>Concierto / Auditorio</option>
+                <option>Fiesta patronal / municipal</option>
+                <option>Procesión / Acto religioso</option>
+                <option>Cabalgata / Desfile</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="mensaje">Cuéntanos sobre tu evento</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                required
+                placeholder="Fecha aproximada, lugar, tipo de actuación..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn primary"
+              style="width: 100%; border: 0; padding: 16px"
+            >
+              ENVIAR MENSAJE
+            </button>
+            <p class="form-note">
+              Al enviar este formulario aceptas que usemos tus datos únicamente
+              para responder a tu solicitud.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COLABORADORES ===================== -->
+    <!-- Coloca los archivos de logo reales en la carpeta images/ con los
+         nombres indicados abajo (o cambia la ruta del src), y sustituye
+         los href="#" por las webs de cada entidad. -->
+    <section class="collaborators">
+      <div class="wave-top" aria-hidden="true">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path
+            d="M0,55 C150,10 250,100 390,55 S650,15 800,60 S1030,105 1200,40"
+          />
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="collab-head">
+          <span class="section-label">COLABORACIONES</span>
+          <h2>Gracias a quienes lo hacen posible</h2>
+          <p>
+            Nuestra banda crece gracias a las entidades que confían en
+            nosotros y respaldan la música en Roquetas de Mar.
+          </p>
+        </div>
+
+        <div class="collab-grid">
+          <div class="collab-card">
+            <div class="collab-logo">
+              <img
+                src="images/colabora1.jpg"
+                alt="Ayuntamiento de Roquetas de Mar"
+                loading="lazy"
+              />
+            </div>
+            <h3>Escuela Municipal de Música, Danza y Teatro de Roquetas de Mar</h3>
+            <p>Apoyo institucional a nuestras actuaciones y proyectos.</p>
+          
+          </div>
+          <div class="collab-card">
+            <div class="collab-logo">
+              <img
+                src="images/colabora2.jpg"
+                alt="Entidad Colaboradora 2"
+                loading="lazy"
+              />
+            </div>
+            <h3>Federband</h3>
+            <p>Federacióna Andaluza de Bandas de Musica.</p>
+          
+          </div>
+          <div class="collab-card">
+            <div class="collab-logo">
+              <img
+                src="images/colabora3.png"
+                alt="Entidad Colaboradora 3"
+                loading="lazy"
+              />
+            </div>
+            <h3>Ayuntamiento de Roquetas de Mar</h3>
+            <p>Apoyo institucional a nuestras actuaciones y proyectos.</p>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img
+                src="images/logo.jpg"
+                alt="Unión Musical Roquetas de Mar"
+                width="56"
+                loading="lazy"
+              />
+
+              <div class="brand-text">
+                <div class="l1" style="color: #fff">UNIÓN MUSICAL</div>
+                <div class="l2">Roquetas de Mar</div>
+              </div>
+            </div>
+            <p class="tagline">Música · Formación · Tradición</p>
+            <div class="socials">
+              <a
+                href="https://www.facebook.com/BandaRoquetas"
+                aria-label="Facebook"
+                >f</a
+              >
+              <a
+                href="https://www.instagram.com/banda_roquetas"
+                aria-label="Instagram"
+                >◎</a
+              >
+              <a
+                href="https://www.youtube.com/channel/UCZh4WNRrbnVeWUR0BMr2q4Q"
+                aria-label="YouTube"
+                >▶</a
+              >
+              <!-- <a href="#" aria-label="Spotify">◐</a> -->
+            </div>
+          </div>
+          <div>
+            <h5>Navegación</h5>
+            <div class="flinks">
+              <a href="#banda">Inicio</a>
+              <a href="#labanda">La Banda</a>
+              <a href="#academia">Academia</a>
+              <a href="#galeria">Galería</a>
+            </div>
+          </div>
+          <div>
+            <h5>Contacto</h5>
+            <div class="contact-item">
+              <span class="ic">📞</span> 607 14 23 34
+            </div>
+            <div class="contact-item">
+              <span class="ic">✉️</span> info@umroquetas.es
+            </div>
+            <div class="contact-item">
+              <span class="ic">📍</span> Roquetas de Mar, Almería
+            </div>
+          </div>
+          <div>
+            <h5>Legal</h5>
+            <div class="flinks">
+              <a href="#">Aviso legal</a>
+              <a href="#">Política de privacidad</a>
+              <a href="#">Política de cookies</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Unión Musical Roquetas de Mar</span>
+          <span>Diseño realizado con cariño para la banda 🎺</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* Nav fijo al hacer scroll */
+      const nav = document.getElementById("nav");
+      const onScroll = () =>
+        nav.classList.toggle("scrolled", window.scrollY > 60);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      /* Menú móvil (hamburguesa) */
+      const navToggle = document.getElementById("navToggle");
+      const menu = document.getElementById("menu");
+
+      function closeMenu() {
+        menu.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Abrir menú");
+        document.body.classList.remove("menu-open");
+      }
+      function openMenu() {
+        menu.classList.add("open");
+        navToggle.setAttribute("aria-expanded", "true");
+        navToggle.setAttribute("aria-label", "Cerrar menú");
+        document.body.classList.add("menu-open");
+      }
+      navToggle.addEventListener("click", () => {
+        menu.classList.contains("open") ? closeMenu() : openMenu();
+      });
+      menu
+        .querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      /* Reproductor de audio real */
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("play");
+      const progressBar = document.getElementById("progressBar");
+      const progressFill = document.getElementById("progress");
+      const timeCurrent = document.getElementById("timeCurrent");
+      const timeDuration = document.getElementById("timeDuration");
+      const audioNote = document.getElementById("audioNote");
+
+      function formatTime(s) {
+        if (!isFinite(s) || s < 0) return "0:00";
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60)
+          .toString()
+          .padStart(2, "0");
+        return `${m}:${sec}`;
+      }
+
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) audio.play().catch(() => {});
+        else audio.pause();
+      });
+
+      audio.addEventListener("play", () => {
+        playBtn.textContent = "Ⅱ";
+        playBtn.setAttribute("aria-label", "Pausar");
+      });
+      audio.addEventListener("pause", () => {
+        playBtn.textContent = "▶";
+        playBtn.setAttribute("aria-label", "Reproducir");
+      });
+      audio.addEventListener("ended", () => {
+        progressFill.style.width = "0%";
+        progressBar.setAttribute("aria-valuenow", "0");
+        timeCurrent.textContent = "0:00";
+      });
+      audio.addEventListener("loadedmetadata", () => {
+        timeDuration.textContent = formatTime(audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = pct + "%";
+        progressBar.setAttribute("aria-valuenow", Math.round(pct));
+        timeCurrent.textContent = formatTime(audio.currentTime);
+      });
+      audio.addEventListener("error", () => {
+        audioNote.textContent =
+          "No se encontró el archivo de audio. Añade tu .mp3 en audio/pasodoble-a-roquetas.mp3";
+      });
+
+      function seek(clientX) {
+        if (!audio.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const ratio = Math.min(
+          1,
+          Math.max(0, (clientX - rect.left) / rect.width),
+        );
+        audio.currentTime = ratio * audio.duration;
+      }
+      progressBar.addEventListener("click", (e) => seek(e.clientX));
+      progressBar.addEventListener("keydown", (e) => {
+        if (!audio.duration) return;
+        if (e.key === "ArrowRight")
+          audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+        if (e.key === "ArrowLeft")
+          audio.currentTime = Math.max(0, audio.currentTime - 5);
+      });
+
+      /* Animaciones al aparecer en pantalla (scroll reveal) */
+      const revealEls = document.querySelectorAll(".reveal");
+      revealEls.forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 5) * 80}ms`;
+      });
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add("in-view"));
+      }
+    </script>
+  </body>
+</html>
